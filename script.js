@@ -62,8 +62,16 @@ function updateLab() {
   $("#observation").textContent = solute === "salt"
     ? "With sodium chloride, the idealized model predicts more dissolved particles and a larger boiling-point increase."
     : "With sucrose, the idealized model predicts fewer dissolved particles per mole than sodium chloride.";
+  const fillBottom = 319;
+  const fillTop = 285 - ((water - 100) / 900) * 160;
+  $("#waterShape").setAttribute("y", fillTop.toFixed(1));
+  $("#waterShape").setAttribute("height", (fillBottom - fillTop).toFixed(1));
+
   const count = Math.min(38, Math.round(mass / 2));
-  $("#particles").innerHTML = Array.from({ length: count }, (_, index) => `<circle class="particle" cx="${100 + (index * 47) % 160}" cy="${270 - (index * 31) % 92}" r="${solute === "salt" ? 6 : 8}"/>`).join("");
+  const particleRange = Math.max(20, 300 - fillTop);
+  $("#particles").innerHTML = Array.from({ length: count }, (_, index) =>
+    `<circle class="particle" cx="${100 + (index * 47) % 160}" cy="${fillTop + 10 + (index * 31) % particleRange}" r="${solute === "salt" ? 6 : 8}"/>`
+  ).join("");
 }
 
 ["solute", "mass", "water"].forEach(id => $("#" + id).addEventListener("input", updateLab));

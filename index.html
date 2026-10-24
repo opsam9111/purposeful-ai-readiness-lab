@@ -133,10 +133,15 @@
         </div>
         <div class="beaker-wrap">
           <svg class="beaker" viewBox="0 0 360 360" role="img" aria-labelledby="beakerTitle beakerDesc">
-            <title id="beakerTitle">Interactive beaker model</title><desc id="beakerDesc">Particles in water increase as solute mass increases.</desc>
+            <title id="beakerTitle">Interactive beaker model</title><desc id="beakerDesc">The water level rises as water mass increases, while particles increase as solute mass increases.</desc>
+            <defs>
+              <clipPath id="beakerInterior">
+                <path d="M129 52v51L76 282c-6 25 9 43 39 43h130c30 0 45-18 39-43l-53-179V52z"/>
+              </clipPath>
+            </defs>
             <path d="M96 45h168M125 45v58L72 282c-8 31 11 50 43 50h130c32 0 51-19 43-50l-53-179V45" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
-            <path id="waterShape" d="M94 235h172l14 54c5 18-7 30-25 30H105c-18 0-30-12-25-30z" fill="#44b9d6" opacity=".65"/>
-            <g id="particles"></g>
+            <rect id="waterShape" x="72" y="235" width="216" height="84" fill="#44b9d6" opacity=".65" clip-path="url(#beakerInterior)"/>
+            <g id="particles" clip-path="url(#beakerInterior)"></g>
             <path d="M128 76h104" stroke="currentColor" stroke-width="4" opacity=".35"/>
           </svg>
           <p class="observation" id="observation" aria-live="polite"></p>
