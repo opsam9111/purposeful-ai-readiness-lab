@@ -91,10 +91,6 @@
         <div class="form-actions"><button class="button primary" type="submit" data-i18n="showPlan">Show my readiness profile</button><button class="button ghost" type="reset" data-i18n="reset">Reset</button></div>
       </form>
       <div id="results" class="results" hidden aria-live="polite"></div>
-      <aside class="confidence-note" aria-labelledby="confidenceNoteTitle">
-        <h3 id="confidenceNoteTitle">Why confidence is reported separately</h3>
-        <p>Confidence can influence whether a teacher attempts an unfamiliar task, but it is not one of UTAUT’s four core constructs. This planning tool therefore reports confidence as a supplemental indicator instead of adding it to a UTAUT score.</p>
-      </aside>
     </section>
 
     <section class="section" id="plan">
@@ -130,7 +126,6 @@
               <option value="">Choose a barrier</option>
               <option value="value">The benefit is not yet clear</option>
               <option value="effort">The process feels difficult</option>
-              <option value="confidence">Confidence is low</option>
               <option value="support">Trusted support is limited</option>
               <option value="device">No suitable device</option>
               <option value="electricity">Unreliable electricity</option>
@@ -161,6 +156,9 @@
         <p>Use this option when staff share devices, data is limited, or leaders want to discuss patterns without collecting names. Print one check per participant and one tally sheet for the facilitator.</p>
         <div class="group-actions"><button class="button secondary" id="printGroup" type="button">Print one-page group tool</button></div>
         <div class="group-preview" aria-label="Preview of the printable group tally">
+          <h3>Readiness check</h3>
+          <p>For each statement, circle 1 (strongly disagree), 2, 3, 4, or 5 (strongly agree).</p>
+          <ol id="printQuestionList" class="print-question-list"></ol>
           <table>
             <caption>Anonymous group pattern tally</caption>
             <thead><tr><th scope="col">Profile</th><th scope="col">Current barrier</th><th scope="col">Developing</th><th scope="col">Relative strength</th><th scope="col">Priority action</th></tr></thead>
@@ -171,6 +169,12 @@
               <tr><th scope="row">FC</th><td></td><td></td><td></td><td></td></tr>
             </tbody>
           </table>
+          <h3>Turn the group pattern into one support plan</h3>
+          <table>
+            <thead><tr><th scope="col">Name one barrier</th><th scope="col">Choose one feasible action</th><th scope="col">Name who will help</th><th scope="col">Check what changed</th></tr></thead>
+            <tbody><tr><td></td><td></td><td></td><td></td></tr></tbody>
+          </table>
+          <p><strong>A low profile starts a conversation; it does not label a teacher.</strong></p>
         </div>
       </details>
     </section>

@@ -1,8 +1,6 @@
-/* Peer-review revision: actionable profiles, confidence, and offline planning */
-.question-card.supplemental{border-left:7px solid var(--gold)}
-.confidence-note,.confidence-result,.next-steps{margin-top:20px;padding:18px;border-radius:14px;background:#fff8e8;border:1px solid #e5c781}
-.confidence-note h3,.next-steps h4{margin-top:0}
-.confidence-result{background:#f1f6f7;border-color:var(--line)}
+/* Peer-review revision: actionable profiles and offline planning */
+.next-steps{margin-top:20px;padding:18px;border-radius:14px;background:#fff8e8;border:1px solid #e5c781}
+.next-steps h4{margin-top:0}
 .next-steps ol{margin-bottom:0}
 .support-planner{margin-top:34px;padding:30px;border-radius:20px;background:#edf7f6;border:1px solid #acd2ce}
 .support-planner h3{font-family:Georgia,serif;font-size:2rem;margin:.15rem 0}
@@ -17,10 +15,11 @@
 .group-preview caption{font-weight:850;text-align:left;padding:.5rem 0}
 .group-preview th,.group-preview td{border:1px solid #8fa2a8;padding:.65rem;text-align:left;min-width:110px}
 .group-preview td{height:48px}
+.print-question-list{padding-left:1.4rem}.print-question-list li{display:grid;grid-template-columns:1fr auto;gap:16px;padding:.45rem 0;border-bottom:1px solid var(--line)}.paper-scale{white-space:nowrap;font-weight:800}
 @media(max-width:900px){.planner-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.planner-grid{grid-template-columns:1fr}}
 @media print{
-  .site-header,.progress-nav,.hero,footer,.section:not(#diagnose):not(#plan),.hero-actions,.form-actions,.icon-button,.prompt-card button,.confidence-note{display:none!important}
+  .site-header,.progress-nav,.hero,footer,.section:not(#diagnose):not(#plan),.hero-actions,.form-actions,.icon-button,.prompt-card button{display:none!important}
   #diagnose,#plan{display:block!important;padding:12px;background:#fff}
   #diagnose .section-heading,#plan .section-heading,.action-grid,.roadmap{display:none}
   .question-card{padding:8px;break-inside:avoid}
@@ -29,9 +28,16 @@
   .results,.support-planner{box-shadow:none;break-inside:avoid}
   .support-planner{padding:14px}
   .group-tool{display:none}
-  body[data-print-mode="group"] #readinessForm,body[data-print-mode="group"] #results,body[data-print-mode="group"] .support-planner,body[data-print-mode="group"] .confidence-note{display:none!important}
+  body[data-print-mode="group"] #readinessForm,body[data-print-mode="group"] #results,body[data-print-mode="group"] .support-planner{display:none!important}
   body[data-print-mode="group"] .group-tool{display:block!important;border:0;padding:0}
   body[data-print-mode="group"] #diagnose{display:block!important}
   body[data-print-mode="group"] #diagnose .section-heading{display:block}
   body[data-print-mode="group"] #plan{display:none!important}
+  body[data-print-mode="group"]{font-size:9pt;line-height:1.2}
+  body[data-print-mode="group"] .section-heading{margin-bottom:8px}
+  body[data-print-mode="group"] .section-heading h2{font-size:18pt;margin:0 0 4px}
+  body[data-print-mode="group"] .group-tool p,body[data-print-mode="group"] .group-tool h3{margin:.35rem 0}
+  body[data-print-mode="group"] .print-question-list li{padding:2px 0}
+  body[data-print-mode="group"] .group-preview th,body[data-print-mode="group"] .group-preview td{padding:3px;min-width:0}
+  body[data-print-mode="group"] .group-preview td{height:24px}
 }

@@ -9,7 +9,7 @@ The revision moves the readiness check from reflection to action while preservin
 | Feedback | Revision | Design reason |
 |---|---|---|
 | Recommend next steps from the lowest areas | Results now identify the two lowest profiles and present up to three matched next steps. | A profile becomes useful when it leads to feasible support rather than a generic adoption recommendation. |
-| Add teacher confidence | One confidence statement and result were added as a supplemental indicator. | Confidence matters in practice, but it is not presented as one of UTAUT's four core constructs. |
+| Address teacher confidence | The first effort-expectancy statement now specifies learning through a worked example and guided practice, and low-EE support builds competence through guided practice. No separate confidence score was added. | Confidence is addressed through support without misrepresenting it as one of UTAUT's four core constructs. |
 | Add a printable group tool | The Plan section now includes an anonymous tally table and a print mode for offline staff meetings. | Schools with limited connectivity or shared devices can discuss group patterns without storing individual answers. |
 | Separate access barriers | Device access, electricity, connectivity, data affordability, and policy/support now have separate items. | Each barrier requires a different response; bundling them could produce an unhelpful recommendation. |
 | Turn a profile into a support plan | A four-part planner asks for one barrier, one feasible action, who will help, and what change will be checked. | The plan connects diagnosis with responsibility and observable evidence. |

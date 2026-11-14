@@ -3,7 +3,7 @@
 An interactive UTAUT readiness lab for Nigerian secondary-school teachers and school leaders. It combines:
 
 - a UTAUT readiness self-check;
-- separate PE, EE, SI, and FC profiles plus a supplemental confidence indicator;
+- separate PE, EE, SI, and FC profiles without an overall readiness grade;
 - matched next steps and a four-part support-plan builder;
 - separate checks for device access, electricity, connectivity, data affordability, and school support;
 - printable individual and anonymous group/offline tools;

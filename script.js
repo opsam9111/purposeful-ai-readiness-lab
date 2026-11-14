@@ -1,7 +1,7 @@
 const questions = [
   { construct: "PE", text: "Using generative AI could help me prepare clearer or more useful learning materials." },
   { construct: "PE", text: "Generative AI could improve my teaching performance when I verify and adapt its output." },
-  { construct: "EE", text: "I could learn the basic steps for using an approved generative AI tool." },
+  { construct: "EE", text: "With a worked example and guided practice, I could learn the basic steps for using an approved generative AI tool." },
   { construct: "EE", text: "With a worked example and guided practice, creating a useful prompt would be manageable." },
   { construct: "SI", text: "Colleagues whose judgment I respect would support responsible classroom use." },
   { construct: "SI", text: "School leaders would clearly communicate when and how teachers may use generative AI." },
@@ -12,26 +12,20 @@ const questions = [
   { construct: "FC", barrier: "policy", text: "My school could provide policy guidance, training, and a knowledgeable person when difficulties arise." }
 ];
 
-const confidenceQuestion = "I feel confident learning a new educational technology with limited assistance.";
-
 const responseLabels = ["Strongly disagree", "Disagree", "Not sure", "Agree", "Strongly agree"];
 const $ = selector => document.querySelector(selector);
 
 function renderQuestions() {
-  const utautItems = questions.map((question, index) => `
+  $("#questions").innerHTML = questions.map((question, index) => `
     <div class="question-card"><fieldset>
       <legend>${index + 1}. ${question.text} <small>(${question.construct})</small></legend>
       <div class="scale">${responseLabels.map((label, answerIndex) => `
         <label><input type="radio" name="q${index}" value="${answerIndex + 1}" required>
         <span>${answerIndex + 1}. ${label}</span></label>`).join("")}</div>
     </fieldset></div>`).join("");
-  $("#questions").innerHTML = `${utautItems}
-    <div class="question-card supplemental"><fieldset>
-      <legend>${questions.length + 1}. ${confidenceQuestion} <small>(supplemental confidence indicator)</small></legend>
-      <div class="scale">${responseLabels.map((label, answerIndex) => `
-        <label><input type="radio" name="confidence" value="${answerIndex + 1}" required>
-        <span>${answerIndex + 1}. ${label}</span></label>`).join("")}</div>
-    </fieldset></div>`;
+  $("#printQuestionList").innerHTML = questions.map(question =>
+    `<li><span>${question.text} <strong>(${question.construct})</strong></span><span class="paper-scale">1 &nbsp; 2 &nbsp; 3 &nbsp; 4 &nbsp; 5</span></li>`
+  ).join("");
 }
 
 function classify(value) {
@@ -43,7 +37,7 @@ function classify(value) {
 $("#readinessForm").addEventListener("submit", event => {
   event.preventDefault();
   const data = new FormData(event.currentTarget);
-  if (questions.some((_, index) => !data.get(`q${index}`)) || !data.get("confidence")) {
+  if (questions.some((_, index) => !data.get(`q${index}`))) {
     alert("Please answer every statement.");
     return;
   }
@@ -56,19 +50,17 @@ $("#readinessForm").addEventListener("submit", event => {
   const ranked = Object.entries(scores).sort((a, b) => a[1] - b[1]);
   const priorityKeys = ranked.slice(0, 2).map(([key]) => key);
   const recommendations = getRecommendations(priorityKeys, data);
-  const confidence = Number(data.get("confidence"));
   $("#results").innerHTML = `<h3 tabindex="-1">Your readiness profile</h3><div class="profile-grid">${Object.entries(scores).map(([key, value]) => {
     const [label, color] = classify(value);
     return `<article class="profile"><strong>${key}</strong><div class="score">${value.toFixed(1)}/5</div><div class="meter"><span style="width:${value * 20}%;background:${color}"></span></div><small>${titles[key]} • ${label}</small></article>`;
   }).join("")}</div>
-    <article class="confidence-result"><strong>Supplemental confidence:</strong> ${confidence}/5. This is contextual information, not a UTAUT construct score.</article>
     <p>Treat each construct separately. Begin with the lowest area instead of averaging away the problem.</p>
     <section class="next-steps" aria-labelledby="nextStepsTitle"><h4 id="nextStepsTitle">Your recommended next steps</h4><ol>${recommendations.map(item => `<li>${item}</li>`).join("")}</ol></section>`;
   $("#results").hidden = false;
   $("#results h3").focus();
   $("#results").scrollIntoView({ behavior: "smooth", block: "center" });
   const lowestKey = ranked[0][0];
-  const barrierMap = { PE: "value", EE: confidence <= 2 ? "confidence" : "effort", SI: "support", FC: getLowestAccessBarrier(data) };
+  const barrierMap = { PE: "value", EE: "effort", SI: "support", FC: getLowestAccessBarrier(data) };
   $("#barrierSelect").value = barrierMap[lowestKey];
 });
 
@@ -77,7 +69,6 @@ $("#readinessForm").addEventListener("reset", () => { $("#results").hidden = tru
 const matchedPlans = {
   value: ["Compare one authentic planning task with the current method and judge quality as well as time.", "teacher + subject lead", "Does the verified output improve one lesson without reducing quality?"],
   effort: ["Use one short prompt template, a worked example, and guided practice before independent use.", "teacher + GenAI coordinator", "Can the teacher complete the process with fewer prompts for help?"],
-  confidence: ["Begin with a supported practice task, allow questions, and repeat it until the teacher can explain each step.", "teacher + trusted peer", "Can the teacher complete and explain one safe use independently?"],
   support: ["Invite a respected teacher and school leader to model one approved use and discuss concerns openly.", "teacher + opinion leader + school lead", "Are expectations clearer, and is one voluntary pilot agreed?"],
   device: ["Schedule shared-device access or provide an approved school device for a bounded practice task.", "school lead + ICT coordinator", "Can the teacher complete one practice task on an available device?"],
   electricity: ["Provide an offline worked example and schedule practice during a reliable power period or with backup power.", "teacher + school lead", "Can the teacher complete one practice task despite the power constraint?"],
@@ -92,7 +83,7 @@ function getLowestAccessBarrier(data) {
 }
 
 function getRecommendations(priorityKeys, data) {
-  const keyToBarrier = { PE: "value", EE: Number(data.get("confidence")) <= 2 ? "confidence" : "effort", SI: "support", FC: getLowestAccessBarrier(data) };
+  const keyToBarrier = { PE: "value", EE: "effort", SI: "support", FC: getLowestAccessBarrier(data) };
   const actions = priorityKeys.map(key => matchedPlans[keyToBarrier[key]][0]);
   actions.push("After four weeks, check one observable change before deciding to continue, adapt, support further, or discontinue the tool.");
   return actions.slice(0, 3);
