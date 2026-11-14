@@ -1,0 +1,37 @@
+/* Peer-review revision: actionable profiles, confidence, and offline planning */
+.question-card.supplemental{border-left:7px solid var(--gold)}
+.confidence-note,.confidence-result,.next-steps{margin-top:20px;padding:18px;border-radius:14px;background:#fff8e8;border:1px solid #e5c781}
+.confidence-note h3,.next-steps h4{margin-top:0}
+.confidence-result{background:#f1f6f7;border-color:var(--line)}
+.next-steps ol{margin-bottom:0}
+.support-planner{margin-top:34px;padding:30px;border-radius:20px;background:#edf7f6;border:1px solid #acd2ce}
+.support-planner h3{font-family:Georgia,serif;font-size:2rem;margin:.15rem 0}
+.planner-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
+.planner-grid label{display:grid;gap:8px;font-weight:800}
+.planner-grid select,.planner-grid input,.planner-grid textarea{width:100%;padding:.78rem;border:1px solid #839ba3;border-radius:10px;background:#fff;color:var(--ink)}
+.planner-principle{text-align:center;margin-bottom:0}
+.group-tool{margin-top:28px}
+.group-actions{margin-bottom:16px}
+.group-preview{overflow:auto}
+.group-preview table{width:100%;border-collapse:collapse}
+.group-preview caption{font-weight:850;text-align:left;padding:.5rem 0}
+.group-preview th,.group-preview td{border:1px solid #8fa2a8;padding:.65rem;text-align:left;min-width:110px}
+.group-preview td{height:48px}
+@media(max-width:900px){.planner-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.planner-grid{grid-template-columns:1fr}}
+@media print{
+  .site-header,.progress-nav,.hero,footer,.section:not(#diagnose):not(#plan),.hero-actions,.form-actions,.icon-button,.prompt-card button,.confidence-note{display:none!important}
+  #diagnose,#plan{display:block!important;padding:12px;background:#fff}
+  #diagnose .section-heading,#plan .section-heading,.action-grid,.roadmap{display:none}
+  .question-card{padding:8px;break-inside:avoid}
+  .scale{grid-template-columns:repeat(5,1fr)}
+  .scale label{padding:3px;font-size:.72rem}
+  .results,.support-planner{box-shadow:none;break-inside:avoid}
+  .support-planner{padding:14px}
+  .group-tool{display:none}
+  body[data-print-mode="group"] #readinessForm,body[data-print-mode="group"] #results,body[data-print-mode="group"] .support-planner,body[data-print-mode="group"] .confidence-note{display:none!important}
+  body[data-print-mode="group"] .group-tool{display:block!important;border:0;padding:0}
+  body[data-print-mode="group"] #diagnose{display:block!important}
+  body[data-print-mode="group"] #diagnose .section-heading{display:block}
+  body[data-print-mode="group"] #plan{display:none!important}
+}

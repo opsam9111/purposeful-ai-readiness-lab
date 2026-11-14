@@ -3,7 +3,10 @@
 An interactive UTAUT readiness lab for Nigerian secondary-school teachers and school leaders. It combines:
 
 - a UTAUT readiness self-check;
-- matched implementation supports;
+- separate PE, EE, SI, and FC profiles plus a supplemental confidence indicator;
+- matched next steps and a four-part support-plan builder;
+- separate checks for device access, electricity, connectivity, data affordability, and school support;
+- printable individual and anonymous group/offline tools;
 - a simplified boiling-point-elevation demonstration;
 - TPACK and UDL design explanations;
 - responsible-AI checkpoints;
@@ -11,11 +14,11 @@ An interactive UTAUT readiness lab for Nigerian secondary-school teachers and sc
 
 ## Run locally
 
-Open `dist/index.html` in a modern browser. No build step or server is required.
+Open `index.html` in a modern browser. No build step or server is required.
 
 ## GitHub Pages
 
-Copy the files inside `dist/` to the root of a GitHub repository, or configure GitHub Pages to publish from the `dist` folder.
+Upload the files in this folder to the root of a GitHub repository and configure GitHub Pages to publish from the repository root.
 
 ## Accessibility and privacy
 

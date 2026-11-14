@@ -6,6 +6,7 @@
   <meta name="description" content="A UTAUT readiness lab for purposeful generative AI adoption in Nigerian secondary schools.">
   <title>From Pen and Paper to Purposeful AI</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="revision.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -90,6 +91,10 @@
         <div class="form-actions"><button class="button primary" type="submit" data-i18n="showPlan">Show my readiness profile</button><button class="button ghost" type="reset" data-i18n="reset">Reset</button></div>
       </form>
       <div id="results" class="results" hidden aria-live="polite"></div>
+      <aside class="confidence-note" aria-labelledby="confidenceNoteTitle">
+        <h3 id="confidenceNoteTitle">Why confidence is reported separately</h3>
+        <p>Confidence can influence whether a teacher attempts an unfamiliar task, but it is not one of UTAUT’s four core constructs. This planning tool therefore reports confidence as a supplemental indicator instead of adding it to a UTAUT score.</p>
+      </aside>
     </section>
 
     <section class="section" id="plan">
@@ -113,6 +118,61 @@
           <li><strong data-i18n="stage4">Scale:</strong> <span data-i18n="stage4Text">share evidence, revise policy, and expand support only when justified.</span></li>
         </ol>
       </div>
+      <div class="support-planner" id="supportPlanner">
+        <div>
+          <p class="eyebrow">From profile to practice</p>
+          <h3>Build one feasible support plan</h3>
+          <p>Use the lowest profile to begin a conversation. Select one barrier, one realistic action, one person who will help, and one observable change to check.</p>
+        </div>
+        <div class="planner-grid">
+          <label>1. Name one barrier
+            <select id="barrierSelect">
+              <option value="">Choose a barrier</option>
+              <option value="value">The benefit is not yet clear</option>
+              <option value="effort">The process feels difficult</option>
+              <option value="confidence">Confidence is low</option>
+              <option value="support">Trusted support is limited</option>
+              <option value="device">No suitable device</option>
+              <option value="electricity">Unreliable electricity</option>
+              <option value="connectivity">Unreliable connectivity</option>
+              <option value="data">Data is not affordable</option>
+              <option value="policy">Policy, training, or human help is missing</option>
+            </select>
+          </label>
+          <label>2. Choose one feasible action
+            <textarea id="actionInput" rows="3" placeholder="Example: provide a printed worked example and a shared-access practice period."></textarea>
+          </label>
+          <label>3. Name who will help
+            <input id="helperInput" type="text" placeholder="Example: teacher + school lead">
+          </label>
+          <label>4. Check what changed
+            <textarea id="evidenceInput" rows="3" placeholder="Example: Can the teacher prepare and verify one useful example?"></textarea>
+          </label>
+        </div>
+        <div class="form-actions">
+          <button class="button primary" id="suggestPlan" type="button">Suggest a matched plan</button>
+          <button class="button secondary" id="printIndividual" type="button">Print my profile and plan</button>
+        </div>
+        <p class="planner-principle"><strong>A low profile starts a conversation; it does not label a teacher.</strong></p>
+      </div>
+
+      <details class="group-tool" id="groupTool">
+        <summary>Offline and group option: printable readiness check and tally sheet</summary>
+        <p>Use this option when staff share devices, data is limited, or leaders want to discuss patterns without collecting names. Print one check per participant and one tally sheet for the facilitator.</p>
+        <div class="group-actions"><button class="button secondary" id="printGroup" type="button">Print one-page group tool</button></div>
+        <div class="group-preview" aria-label="Preview of the printable group tally">
+          <table>
+            <caption>Anonymous group pattern tally</caption>
+            <thead><tr><th scope="col">Profile</th><th scope="col">Current barrier</th><th scope="col">Developing</th><th scope="col">Relative strength</th><th scope="col">Priority action</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">PE</th><td></td><td></td><td></td><td></td></tr>
+              <tr><th scope="row">EE</th><td></td><td></td><td></td><td></td></tr>
+              <tr><th scope="row">SI</th><td></td><td></td><td></td><td></td></tr>
+              <tr><th scope="row">FC</th><td></td><td></td><td></td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
     </section>
 
     <section class="section dark" id="demonstrate">
